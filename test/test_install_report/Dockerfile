@@ -2,7 +2,7 @@ FROM python:3.10-buster
 
 LABEL org.opencontainers.image.authors="David Baetge <david.baetge@gmail.com>"
 
-ARG WEEWX_VERSION="5.0.2"
+ARG WEEWX_VERSION="5.1.0"
 ARG WEEWX_UID=2749
 ENV WEEWX_HOME="/home/weewx-data"
 RUN current_date=$(date +%Y-%m-%d\ %H:%M:%S)
@@ -66,7 +66,7 @@ WORKDIR ${WEEWX_HOME}
 RUN python3 -m venv ${WEEWX_HOME}/weewx-venv &&\
     # shellcheck source=/dev/null
     . ${WEEWX_HOME}/weewx-venv/bin/activate &&\
-    python3 -m pip install --no-cache-dir weewx==${WEEWX_VERSION}
+    python3 -m pip install --no-cache-dir weewx==${WEEWX_VERSION} six
 
 RUN . ${WEEWX_HOME}/weewx-venv/bin/activate &&\
     weectl station create "${WEEWX_HOME}" --no-prompt \

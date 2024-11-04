@@ -20,9 +20,9 @@ sed -i '/A SQLite database is simply a single file/a \[\[dwd_sqlite\]\]\n       
 cat /tmp/dwd-extensions.py >> "${WEEWX_HOME}"/bin/user/extensions.py
 
 # weewx-DWD installieren.
-cd /tmp && wget -nv -O "weewx-dwd.zip" "https://github.com/roe-dl/weewx-DWD/archive/refs/heads/master.zip"
+cd /tmp && wget -nv -O "weewx-dwd.zip" "https://github.com/roe-dl/weewx-DWD/archive/f9400d8edd5689a28d4f45ef0017f355905dd4e7.zip"
 unzip /tmp/weewx-dwd.zip -d /tmp/weewx-dwd/
-cp -R /tmp/weewx-dwd/weewx-DWD-master/usr/ /
+cp -R /tmp/weewx-dwd/weewx-DWD-f9400d8edd5689a28d4f45ef0017f355905dd4e7/usr/ /
 sed -i -z -e "s|PTH=\"/etc/weewx/skins/Belchertown/dwd\"|PTH=\"/home/weewx-data/skins/weewx-wdc/dwd\"|g" /usr/local/bin/wget-dwd
 sed -i -z -e "s|config = configobj.ConfigObj(\"/etc/weewx/weewx.conf\")|config = configobj.ConfigObj(\"/home/weewx-data/weewx.conf\")|g" /usr/local/bin/dwd-warnings
 mkdir "${WEEWX_HOME}/skins/weewx-wdc/dwd"
