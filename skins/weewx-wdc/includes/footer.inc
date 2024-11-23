@@ -48,3 +48,16 @@
     </div>
   </div>
 </div>
+
+<!-- User modal -->
+<script type="text/javascript">
+  document
+    .querySelectorAll('[id^=user-modal-button]')
+    .forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const modalButton = event.target.closest('[id^=user-modal-button]');
+        const modalContentId = modalButton.id.replace('button', 'content');
+        document.getElementById(modalContentId).open = true;
+      }, true);
+    });
+</script>
