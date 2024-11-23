@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 
@@ -27,7 +26,6 @@
             <p class="value">$("%.1f&deg;" % $almanac.moon.dec)</p>
           </div>
         </div>
-        <!--prettier-ignore-->
         #if $almanac.next_full_moon.raw < $almanac.next_new_moon.raw
         <div class="bx--row stats">
           <div class="bx--col">

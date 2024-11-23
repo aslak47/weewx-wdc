@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 
@@ -24,7 +23,6 @@
         </p>
       </div>
     </div>
-    <!--prettier-ignore-->
     #if 'github_link' in $Extras and $to_bool($Extras.github_link)
     <div class="bx--row">
       <div class="bx--col">
@@ -40,7 +38,6 @@
     #end if
     <div class="bx--row">
       <div class="bx--col">
-        <!--prettier-ignore-->
         <p class="footnote">
           $gettext("This station is controlled by <a target='_blank' href='https://weewx.com'>WeeWX</a>, an experimental weather software system written in Python.")
         </p>

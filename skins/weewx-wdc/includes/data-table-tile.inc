@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #encoding UTF-8
 #errorCatcher Echo
 
@@ -7,7 +6,6 @@
     <div class="bx--row">
       <div class="bx--col">
         <script>
-          /*prettier-ignore*/
           #if $context == 'alltime'
           var tableRows = $get_table_rows($alltime.start.raw, $alltime.end.raw, $context, $table_obs);
           var tableHeaders = $jsonize($get_table_headers($alltime.start.raw, $alltime.end.raw, $table_obs));

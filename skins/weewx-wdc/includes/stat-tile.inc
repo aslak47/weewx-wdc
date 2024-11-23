@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #set $label_sum = $get_labels('Sum', $context)
@@ -28,7 +27,6 @@
 
 
 <div class="bx--col-sm-4 bx--col-md-4 bx--col-lg-6 bx--col-xlg-3 bx--col-max-2 stat-tile-wrap-$skin_obs_key">
-  <!--prettier-ignore-->
   #if $render_link
     #set $open_new_tab = "_blank" if $DisplayOptions["stat_tile_links"][$partial_obs]["open"] == "new_tab" else "_self"
     <a class="stat-tile-link" href='$DisplayOptions["stat_tile_links"][$partial_obs]["link"]' target='$open_new_tab'>
@@ -66,7 +64,6 @@
 
       <div class="bx--col">
         <p class="label">$obs.label[$partial_obs]</p>
-        <!--prettier-ignore-->
         <p class="value">
           #set $icon = $get_icon($skin_obs_key)
           #if $icon != 'none' and "includes/icons/" in $icon and '.svg' in $icon
@@ -75,7 +72,6 @@
             <img src="$icon" alt="$obs.label[$partial_obs]" />
           #end if
 
-          <!--prettier-ignore-->
           <span class="stat-title-obs-value">
             #if $context == 'day' and not $daily_archive
 
@@ -162,15 +158,12 @@
                 #end if
               #end if
             #end if
-            <!--prettier-ignore-->
             #if ($context != 'day' or $daily_archive) and not $get_show_sum($partial_obs) and not $get_show_max($partial_obs)
             <span>$gettext("Avg")</span>
             #end if
-            <!--prettier-ignore-->
             #if ($context != 'day' or $daily_archive) and $get_show_sum($partial_obs)
             <span>$gettext("Total")</span>
             #end if
-            <!--prettier-ignore-->
             #if ($context != 'day' or $daily_archive) and $get_show_max($partial_obs)
             <span>$gettext("Max")</span>
             #end if
@@ -180,7 +173,6 @@
     </div>
     <!-- /Main row -->
 
-    <!--prettier-ignore-->
     #if $getattr($observation_binding, $skin_obs_key).has_data
       #if $context != 'day' and $get_show_sum($partial_obs)
         #if $partial_obs == 'rain'
@@ -198,7 +190,6 @@
                     </bx-tooltip-definition>
                   </p>
                   <p class="stat-value">
-                    <!--prettier-ignore-->
                     $last_rain.format("%x")
                   </p>
                 </div>
@@ -206,7 +197,6 @@
                 <div class="bx--col" data-test="rain-days">
                   <p class="stat-label">$gettext("rainDays")</p>
                   <p class="stat-value">
-                    <!--prettier-ignore-->
                     $get_climatological_day('rainDays', $observation_binding.start.raw, $observation_binding.end.raw)
                   </p>
                 </div>
@@ -223,12 +213,10 @@
                 >
                   $gettext("Max") $obs.label.rainRate
                 </bx-tooltip-definition>
-                <!--prettier-ignore-->
                 #else
                   $gettext("Max") $obs.label.rainRate
                 #end if
               </p>
-              <!--prettier-ignore-->
               <p class="stat-value">
                 <span class="value" style="display: inline;">$getattr($observation_binding, 'rainRate').max.format("%." + $rounding + "f")</span>
               </p>
@@ -240,7 +228,6 @@
             <div class="bx--col">
               <p class="stat-label">$gettext($label_avg)</p>
               <p class="stat-value">
-                <!--prettier-ignore-->
                 #if $partial_obs == 'windDir'
                   $getattr($observation_binding, "wind").vecdir
                 #else
@@ -249,14 +236,12 @@
               </p>
             </div>
           </div>
-        <!--prettier-ignore-->
         #end if
       #else
         <div class="bx--row">
           #if $get_show_min($partial_obs)
           <div class="bx--col value-min" data-test="min">
             <p class="stat-label">
-              <!--prettier-ignore-->
               #if $show_min_max_time
               <bx-tooltip-definition
                 alignment="center"
@@ -265,12 +250,10 @@
               >
                 $gettext($label_min)
               </bx-tooltip-definition>
-              <!--prettier-ignore-->
               #else
                 $gettext($label_min)
               #end if
             </p>
-            <!--prettier-ignore-->
             <p class="stat-value">
               <span class="value" style="display: inline;">$getattr($observation_binding, $skin_obs_key).min.format("%." + $rounding + "f")</span>
             </p>
@@ -282,7 +265,6 @@
                 <p class="stat-label">
                   $gettext("Total week short")
                 </p>
-                <!--prettier-ignore-->
                 <p class="stat-value">
                   <span class="value" style="display: inline;">$getattr($week, $skin_obs_key).sum.format("%." + $rounding + "f")</span>
                 </p>
@@ -293,7 +275,6 @@
                 <p class="stat-label">
                   $obs.label.rainRate
                 </p>
-                <!--prettier-ignore-->
                 <p class="stat-value">
                   <span class="value" style="display: inline;">$getattr($current, 'rainRate')</span>
                 </p>
@@ -310,12 +291,10 @@
                   >
                     $gettext("Max") $obs.label.rainRate
                   </bx-tooltip-definition>
-                  <!--prettier-ignore-->
                   #else
                     $gettext("Max") $obs.label.rainRate
                   #end if
                 </p>
-                <!--prettier-ignore-->
                 <p class="stat-value">
                   <span class="value" style="display: inline;">$getattr($day, 'rainRate').max.format("%." + $rounding + "f")</span>
                 </p>
@@ -324,7 +303,6 @@
           #else
             <div class="bx--col value-max" data-test="max">
               <p class="stat-label">
-                <!--prettier-ignore-->
                 #if $show_min_max_time
                 <bx-tooltip-definition
                   alignment="center"
@@ -333,12 +311,10 @@
                 >
                   $gettext($label_max)
                 </bx-tooltip-definition>
-                <!--prettier-ignore-->
                 #else
                   $gettext($label_max)
                 #end if
               </p>
-              <!--prettier-ignore-->
               <p class="stat-value">
                 <span class="value" style="display: inline;">$getattr($observation_binding, $skin_obs_key).max.format("%." + $rounding + "f")</span>
 

@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #import html
@@ -49,11 +48,9 @@
     });
   }
 </script>
-<!--prettier-ignore-->
 #set $diagramWindDirOrdinals = int($DisplayOptions.get('diagram_tile_winddir_ordinal', True) == "True")
 #set $dwdForecastTable = $Extras.get("weewx-DWD", {}).get("forecast_table_settings", {})
 <script>
-  /*prettier-ignore*/
   window.weewxWdcConfig = {
     diagramWindDirOrdinals: $diagramWindDirOrdinals,
     ordinalCompass: $get_ordinates,
@@ -100,7 +97,6 @@
 ></script>
 
 #if "heights" in $diagrams_config
-<!--prettier-ignore-->
 <style>
   *:not(:defined) {
     display: none;

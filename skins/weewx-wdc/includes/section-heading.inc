@@ -1,9 +1,7 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #from datetime import datetime, timedelta
 
-<!--prettier-ignore-->
 <header class="bx--col section-header">
   #if $context == 'day' and not $daily_archive
     <h2>$gettext("Last 24 hours")</h2>
@@ -15,7 +13,6 @@
     <h2>$gettext("Last 7 days")</h2>
     #set $start_date_header = datetime.fromtimestamp($current.dateTime.raw) - timedelta(days=7)
     <h3>
-      <!--prettier-ignore-->
       $start_date_header.strftime($get_time_format_dict['week']) - $current.dateTime.format($get_time_format_dict['week'])
     </h3>
   #else if $context == 'month' and not $use_parameter_month

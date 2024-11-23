@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 
@@ -57,7 +56,6 @@
             <p class="value">$("%.1f&deg;" % $almanac.sun.dec)</p>
           </div>
         </div>
-        <!--prettier-ignore-->
         #if $almanac.next_equinox.raw < $almanac.next_solstice.raw
         ## The equinox is before the solstice. Display them in order.
         <div class="bx--row stats">
@@ -70,7 +68,6 @@
             <p class="value">$almanac.next_solstice</p>
           </div>
         </div>
-        <!--prettier-ignore-->
         #else
         ## The solstice is before the equinox. Display them in order.
         <div class="bx--row stats">
@@ -89,7 +86,6 @@
             <p class="label small">$gettext("Total daylight")</p>
             <p class="value">$almanac.sun.visible.long_form</p>
             <p class="label small">
-              <!--prettier-ignore-->
               $almanac.sun.visible_change.long_form
               #if $almanac.sun.visible_change.raw < 0
                 $gettext("less than yesterday")

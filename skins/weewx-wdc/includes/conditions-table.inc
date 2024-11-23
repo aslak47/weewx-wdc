@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 
@@ -7,7 +6,6 @@
   src="https://1.www.s81c.com/common/carbon/web-components/version/v1.21.0/structured-list.min.js"
 ></script>
 
-<!--prettier-ignore-->
 #set $label_sum = $get_labels('Sum', $context)
 #set $label_min = $get_labels('Min', $context)
 #set $label_max = $get_labels('Max', $context)
@@ -37,11 +35,9 @@
           <bx-structured-list-header-row>
             <bx-structured-list-header-cell></bx-structured-list-header-cell>
             <bx-structured-list-header-cell>
-              <!--prettier-ignore-->
               #if $context != 'day'
                 $gettext($label_avg)
               #end if
-              <!--prettier-ignore-->
               #if $context == 'day'
                 $gettext("Current")
               #end if
@@ -54,7 +50,6 @@
             >
           </bx-structured-list-header-row>
         </bx-structured-list-head>
-        <!--prettier-ignore-->
         <bx-structured-list-body>
           #for $skin_obs in $stat_obs
             #set $skin_obs_binding = $get_data_binding($skin_obs)
@@ -88,7 +83,6 @@
               <bx-structured-list-row data-test="$skin_obs" data-observation="$skin_obs_key" data-unit="$get_unit_label($get_unit_for_obs($skin_obs, $skin_obs_key, $context))" data-rounding="$get_rounding($skin_obs, $skin_obs_key)">
                 <bx-structured-list-cell class="cell-label">$obs.label[$skin_obs]</bx-structured-list-cell>
                 <bx-structured-list-cell class="cell-value">
-                  <!--prettier-ignore-->
                   #if $context == 'day' and not $daily_archive
                     <span>
                       #if $skin_obs_binding != 'wx_binding'
@@ -130,7 +124,6 @@
                     #end if
                   #end if
                 </bx-structured-list-cell>
-                <!--prettier-ignore-->
                 <bx-structured-list-cell class="cell-min">
                   #if $getattr($context_binded, $skin_obs_key).has_data
                     <span>$getattr($context_binded, $skin_obs_key).min.format("%." + $rounding + "f")</span>
@@ -142,7 +135,6 @@
                     <span>$gettext("N/A")</span>
                   #end if
                 </bx-structured-list-cell>
-                <!--prettier-ignore-->
                 <bx-structured-list-cell class="cell-max">
                   #if $getattr($context_binded, $skin_obs_key).has_data
                     <span>$getattr($context_binded, $skin_obs_key).max.format("%." + $rounding + "f")</span>
@@ -189,7 +181,6 @@
             <bx-structured-list-header-cell></bx-structured-list-header-cell>
           </bx-structured-list-header-row>
         </bx-structured-list-head>
-        <!--prettier-ignore-->
         <bx-structured-list-body>
           #for $skin_obs in $stat_obs
             #set $skin_obs_binding = $get_data_binding($skin_obs)
@@ -201,7 +192,6 @@
               #set $rounding = $str($get_rounding($skin_obs, $skin_obs_key))
               <bx-structured-list-row data-aggregation="sum" data-test="$skin_obs" data-observation="$skin_obs_key" data-unit="$get_unit_label($get_unit_for_obs($skin_obs, $skin_obs_key, $context))" data-rounding="$get_rounding($skin_obs, $skin_obs_key)">
                 <bx-structured-list-cell class="keep-cell">$obs.label[$skin_obs]</bx-structured-list-cell>
-                <!--prettier-ignore-->
                 <bx-structured-list-cell class="cell-value">
                   $getattr($context_binding, $skin_obs_key).sum.format("%." + $rounding + "f")
                 </bx-structured-list-cell>

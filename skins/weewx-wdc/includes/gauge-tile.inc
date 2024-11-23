@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 
@@ -37,9 +36,7 @@
   >
     <div class="bx--row">
       <div class="bx--col">
-        <!--prettier-ignore-->
         <div class="value">
-          <!--prettier-ignore-->
           <script>
             // TODO: Implement custom context logic from combined-diagram-tile template
             var $series_name = {

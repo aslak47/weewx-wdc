@@ -1,9 +1,7 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #import datetime
 #import time
 
-<!--prettier-ignore-->
 #encoding UTF-8
 ## Input vars:
 ##   $combined_diagram - The diagrams config
@@ -23,7 +21,6 @@
   #set $diagram_classes = "bx--col"
 #end if
 
-<!--prettier-ignore-->
 #set $combined_diagram_obs = {}
 #for $combined_obs in $combined_diagram.obs.keys()
 #silent $combined_diagram_obs.update({ $combined_obs: $combined_diagram.obs[$combined_obs].observation })
@@ -45,7 +42,6 @@
   <div class="bx--tile diagram-tile combined" data-test="$combined_obs_string">
     <div class="bx--row">
       <div class="bx--col">
-        <!--prettier-ignore-->
         <p class="label">
           #set $icon = $get_icon($comb_obs, $use_combined_diagram_config=True, $context=$context)
 
@@ -67,7 +63,6 @@
 
           $gettext($combined_diagram.label)
         </p>
-        <!--prettier-ignore-->
         <div class="value">
           #set $series_names = []
           #set $series_colors = []
@@ -125,11 +120,9 @@
           #end if
 
           <script>
-            /* prettier-ignore */
             var $series_name = $get_diagram_data($observation=$combined_obs, $observation_key=$series_observation_key, $context_key=$context_key, $start_ts=$start_ts, $end_ts=$end_ts, $data_binding=$combined_obs_binding, $alltime_start=$alltime.start.format('%d.%m.%Y'), alltime_end=$alltime.end.format('%d.%m.%Y'), combined=$combined_diagram, combined_key=$comb_obs);
           </script>
 
-          <!--prettier-ignore-->
           #set $combined_index = $combined_index + 1
           #end for
 

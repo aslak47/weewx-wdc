@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #encoding UTF-8
 #errorCatcher Echo
 #import datetime
@@ -19,10 +18,8 @@
     button-label-inactive="Open menu"
   ></bx-header-menu-button>
   <bx-header-name href="$get_base_path(path='index.html')" prefix="">
-    <!--prettier-ignore-->
     #if 'logo_image' in $Extras
     <img class="logo" src="$Extras['logo_image']" alt="$gettext('Logo')" />
-    <!--prettier-ignore-->
     #else
       #include "includes/icons/wdc.svg"
     #end if
@@ -224,7 +221,6 @@
       <span>$gettext("Statistics")</span>
     </bx-side-nav-link>
 
-    <!--prettier-ignore-->
     #if $show_sensor_page
     <bx-side-nav-link href="$get_base_path(path='sensor-status.html')">
       <svg
@@ -262,7 +258,6 @@
     </bx-side-nav-link>
     #end if
 
-    <!--prettier-ignore-->
     #if $show_cmon_page
     <bx-side-nav-link href="$get_base_path(path='computer-monitor.html')">
       <svg
@@ -298,7 +293,6 @@
     </bx-side-nav-link>
     #end if
 
-    <!--prettier-ignore-->
     #for $static_page in $get_static_pages()
     <bx-side-nav-link href="$get_base_path(path=$static_page['link'])">
       <svg
@@ -332,7 +326,6 @@
     <bx-side-nav-link class="sidebar-heading"
       ><span>$gettext('Archive & NOAA Reports')</span></bx-side-nav-link
     >
-    <!--prettier-ignore-->
     #set $archive_months = $SummaryByMonth
     #if len($SummaryByYear) == 0
     #set $SummaryByYear = $fake_get_report_years($alltime.start.format("%Y"), $latest.dateTime.format("%Y"))
@@ -346,19 +339,15 @@
       </bx-side-nav-menu-item>
       #end for
     </bx-side-nav-menu>
-    <!--prettier-ignore-->
     #for $year in $SummaryByYear
     #set $months_for_year = $filter_months(archive_months, $year)
-    <!--prettier-ignore-->
     <bx-side-nav-menu title="${year}">
-      <!--prettier-ignore-->
       #for $month in $months_for_year
       <bx-side-nav-menu-item href="$get_base_path(path='month-' + $str(month) + '.html')">
         <span>$datetime.datetime.strptime($month, "%Y-%m").strftime("%B")</span>
       </bx-side-nav-menu-item>
       #end for
     </bx-side-nav-menu>
-    <!--prettier-ignore-->
     #end for
   </bx-side-nav-items>
 </bx-side-nav>
@@ -449,7 +438,6 @@
   });
 </script>
 
-<!--prettier-ignore-->
 #if $DisplayOptions.get('layout', 'alternative') == 'classic'
 <script>
   const switchSideNavCollapseMode = function () {

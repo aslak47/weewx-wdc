@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #set $planet = $label_almanac.lower()
@@ -8,7 +7,6 @@
     <div class="bx--row">
       <div class="bx--col">
         <p class="label">
-          <!--prettier-ignore-->
           $gettext($label_almanac)
           #if $get_celestial_icon($label_almanac, None) is not None
           #include $get_celestial_icon($label_almanac, None)
@@ -16,7 +14,6 @@
         </p>
         <div class="bx--row">
           <div class="bx--col value">
-            <!--prettier-ignore-->
             #if $get_celestial_icon($label_almanac, 'rise') is not None
             #include $get_celestial_icon($label_almanac, 'rise')
             #end if
@@ -26,7 +23,6 @@
             </div>
           </div>
           <div class="bx--col value">
-            <!--prettier-ignore-->
             #if $get_celestial_icon($label_almanac, 'transit') is not None
             #include $get_celestial_icon($label_almanac, 'transit')
             #end if
@@ -36,7 +32,6 @@
             </div>
           </div>
           <div class="bx--col value">
-            <!--prettier-ignore-->
             #if $get_celestial_icon($label_almanac, 'set') is not None
             #include $get_celestial_icon($label_almanac, 'set')
             #end if

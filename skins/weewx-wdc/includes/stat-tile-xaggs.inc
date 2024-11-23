@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #from weewx.units import ValueHelper
@@ -22,7 +21,6 @@
     <!-- Main row -->
     <div class="bx--row">
       <div class="bx--col">
-        <!--prettier-ignore-->
         <p class="label" style="padding-bottom: 0.5rem">
             #if $hide_xaggs_heading
               $obs.label[$xaggs_obs]
@@ -78,9 +76,7 @@
           </svg>
 
           <div>
-            <!--prettier-ignore-->
             #for $aggregate_type in $stat_xaggs['aggregate_types']
-            <!--prettier-ignore-->
             <p class="bx--type-body-short-02">
                 #if $aggregate_type == 'historical_min'
                   $pgettext("xaggs", "Low"):

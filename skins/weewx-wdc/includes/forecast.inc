@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #set $forecast_source = $Extras.forecast_table_settings.get('source', None)
@@ -27,9 +26,7 @@
   #set $radar_externals_list = ['radar'] + $externals_list
 #end if
 
-<!--prettier-ignore-->
 #if ($varExists('forecast') and ($forecast_zambretti_active or $forecat_table_active)) or $radar_externals or $dwd_forecast
-<!--prettier-ignore-->
 <div class="bx--row">
   <header class="bx--col section-header">
     <h2>
@@ -40,7 +37,6 @@
 <div class="bx--row">
   <div class="bx--col">
     <div class="bx--row">
-      <!--prettier-ignore-->
       #if $varExists('forecast') or $dwd_forecast
       #set forecast_tile_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-12 bx--col-xlg-6 bx--col-max-8"
       #if 'forecast_radar_equal_width' in $Extras and $to_bool($Extras.forecast_radar_equal_width) and $DisplayOptions.get('layout', 'alternative') == 'alternative'
@@ -51,12 +47,10 @@
       #end if
       <div class="$forecast_tile_classes">
         <div class="bx--tile forecast-tile">
-          <!--prettier-ignore-->
           #if $varExists('forecast.zambretti') and $to_bool($Extras['forecast_zambretti']['enable'])
           <div class="forecast" data-test="forecast-zambretti">
             <h3>Zambretti</h3>
             <p>
-              <!--prettier-ignore-->
               The forecast is $forecast.label('Zambretti', $forecast.zambretti.code)<br />
               <span class="issued"
                 >Issued at $forecast.zambretti.issued_ts</span
@@ -64,14 +58,11 @@
             </p>
           </div>
           #end if
-          <!--prettier-ignore-->
           #if $varExists('forecast') and not $dwd_forecast
           <div class="forecast" data-test="forecast-table">
-            <!--prettier-ignore-->
             #include "includes/forecast-table.inc"
           </div>
           #end if
-          <!--prettier-ignore-->
           #if $dwd_forecast
           <div class="dwd-forecast forecast">
             <script>
@@ -82,17 +73,16 @@
         </div>
       </div>
       #end if
-      <!--prettier-ignore-->
-      #if $radar_externals or $show_warn
-      #set radar_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-12 bx--col-xlg-6 bx--col-max-4"
-      #if 'forecast_radar_equal_width' in $Extras and $to_bool($Extras.forecast_radar_equal_width) and $DisplayOptions.get('layout', 'alternative') == 'alternative'
-        #set radar_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-12 bx--col-xlg-6 bx--col-max-6"
-      #end if
-      #if $DisplayOptions.get('layout', 'alternative') == 'classic'
-        #set radar_classes = "bx--col-sm-4 bx--col-md-12 bx--col-lg-12 bx--col-xlg-12 bx--col-max-12"
-      #end if
 
-      <!--prettier-ignore-->
+      #if $radar_externals or $show_warn
+        #set radar_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-12 bx--col-xlg-6 bx--col-max-4"
+        #if 'forecast_radar_equal_width' in $Extras and $to_bool($Extras.forecast_radar_equal_width) and $DisplayOptions.get('layout', 'alternative') == 'alternative'
+          #set radar_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-12 bx--col-xlg-6 bx--col-max-6"
+        #end if
+        #if $DisplayOptions.get('layout', 'alternative') == 'classic'
+          #set radar_classes = "bx--col-sm-4 bx--col-md-12 bx--col-lg-12 bx--col-xlg-12 bx--col-max-12"
+        #end if
+
       <div class="$radar_classes radar-container">
         #if $show_warn
           #set global $region = $get_dwd_warning_region_name($warn_region_front)
@@ -157,7 +147,6 @@
             #end for
           #end if
         </div>
-
 
         #end if
       </div>
