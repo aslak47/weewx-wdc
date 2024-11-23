@@ -90,6 +90,7 @@
     color_temperature_transparency: $DisplayOptions.get("outTemp_stat_tile_color_transparency", "0.5"),
     color_temperature_min: $DisplayOptions.get("outTemp_stat_tile_color_min", "-20"),
     color_temperature_max: $DisplayOptions.get("outTemp_stat_tile_color_max", "40"),
+    color_temperature_text_only: $to_int($to_bool($DisplayOptions.get("outTemp_stat_tile_color_text_only", "False"))),
   };
 </script>
 

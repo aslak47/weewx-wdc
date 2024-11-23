@@ -2,6 +2,7 @@ const transperancy = (window as any).weewxWdcConfig
   .color_temperature_transparency;
 const min = (window as any).weewxWdcConfig.color_temperature_min;
 const max = (window as any).weewxWdcConfig.color_temperature_max;
+const textOnly = (window as any).weewxWdcConfig.color_temperature_text_only;
 
 // outTemp tile.
 const outTempTile = document.querySelector(
@@ -92,7 +93,13 @@ const setColor = (outTempTile: HTMLDivElement): void => {
   );
 
   const outTempColor = getTemperatureColorRGB(outTemp);
-  outTempTile.style.backgroundColor = outTempColor;
+
+  if (textOnly) {
+    (outTempTile.querySelector("span.raw") as HTMLSpanElement).style.color =
+      outTempColor;
+  } else {
+    outTempTile.style.backgroundColor = outTempColor;
+  }
 };
 
 // Set color for outTemp tile on load.

@@ -940,3 +940,4 @@ index 465d4ad..aa8bad6 100644
 
 - Fixed gauge label decoding. GH-271
 - Add Moon phases and planet name translations GH-264
+- Added option to only color the text in the colored temperatur stat tile GH-243
