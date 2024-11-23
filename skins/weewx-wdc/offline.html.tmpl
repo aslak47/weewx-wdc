@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 

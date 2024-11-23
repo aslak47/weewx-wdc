@@ -106,7 +106,6 @@
           #set global $context = 'day'
 
           <div class="bx--row">
-            <!--prettier-ignore-->
             #for $obs in $computer_monitor_stat_tile_observations
               #set $binding = $get_data_binding($obs)
               #set $alltime_tag = $alltime($data_binding=$binding) if $context == 'alltime' else None

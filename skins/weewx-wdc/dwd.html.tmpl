@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #import datetime
@@ -34,13 +33,11 @@
             </header>
           </div>
 
-          <!--prettier-ignore-->
           #if $to_bool($Extras['weewx-DWD']['show_text_forecast'])
           #set $VHDL = $Extras['weewx-DWD']['text_forecast_VHDL']
           #set $dwd_link = $Extras['weewx-DWD']['dwd_link']
           <div class="bx--row" style="margin-bottom: 1.5rem">
             <div class="bx--col">
-              <!--prettier-ignore-->
               <div class="bx--tile">
                 #set $today = datetime.date.today()
                 #set $headings = {54: $pgettext("DWD", "Current Weather Conditions"), 50: $pgettext("DWD", "Today"), 51: $pgettext("DWD", "Tomorrow"), 52: $pgettext("DWD", ($today + datetime.timedelta(days=2)).strftime("%A")), 53: $pgettext("DWD", ($today + datetime.timedelta(days=3)).strftime("%A"))}
@@ -69,7 +66,6 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $to_bool($Extras['weewx-DWD']['show_forecast']) and os.path.exists("dwd/forecast-" + $Extras['weewx-DWD']['mosmix_id'] + ".json")
           <div class="bx--row" style="margin-bottom: 1.5rem">
             <div class="bx--col">
@@ -84,10 +80,8 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('dwd_meteogram_1', None) is not None
           <div class="bx--row">
-            <!--prettier-ignore-->
             #attr $context = 'custom'
             #set global $context_start_ts = $time.time()
             #set $end_dt = $datetime.date.today() + $datetime.timedelta(days=14)
@@ -101,10 +95,8 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('dwd_meteogram_2', None) is not None
           <div class="bx--row">
-            <!--prettier-ignore-->
             #attr $context = 'custom'
             #set global $context_start_ts = $time.time()
             #set $end_dt = $datetime.date.today() + $datetime.timedelta(days=14)
@@ -118,10 +110,8 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('dwd_meteogram_3', None) is not None
           <div class="bx--row">
-            <!--prettier-ignore-->
             #attr $context = 'custom'
             #set global $context_start_ts = $time.time()
             #set $end_dt = $datetime.date.today() + $datetime.timedelta(days=14)
@@ -135,7 +125,6 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $to_bool($Extras['weewx-DWD']['show_pressure_map']) or $to_bool($Extras['weewx-DWD']['show_warning_map'])
           <div class="bx--row" style="margin-bottom: 1.5rem">
             <div
@@ -145,7 +134,6 @@
                 <h2>$gettext("Aktuelle Bodendruck- und Warnkarte")</h2>
               </header>
             </div>
-            <!--prettier-ignore-->
             #if $to_bool($Extras['weewx-DWD']['show_pressure_map'])
             <div
               class="bx--col-sm-4 bx--col-md-8 bx--col-lg-6 bx--col-xlg-6 bx--col-max-6"
@@ -168,7 +156,6 @@
             </div>
             #end if
 
-            <!--prettier-ignore-->
             #if $to_bool($Extras['weewx-DWD']['show_warning_map'])
             <div
               class="bx--col-sm-4 bx--col-md-8 bx--col-lg-6 bx--col-xlg-6 bx--col-max-6"
@@ -193,7 +180,6 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $to_bool($Extras['weewx-DWD']['show_text_warnings'])
           <div class="bx--row" style="margin-bottom: 1.5rem">
             <div
@@ -205,38 +191,32 @@
             </div>
 
             #set $warning_index = 0
-            <!--prettier-ignore-->
             <div
               class="bx--col-sm-4 bx--col-md-8 bx--col-lg-6 bx--col-xlg-6 bx--col-max-6"
             >
               #for $region, $region_key in $get_dwd_warnings.items()
               #if os.path.exists("dwd/warn-" + $region_key + ".json") and ($warning_index % 2) == 0
 
-                <!--prettier-ignore-->
                 #set global $region = $region
                 #set global $region_key = $region_key
                 #include "includes/dwd-warning.inc"
 
-              <!--prettier-ignore-->
               #end if
               #set $warning_index = $warning_index + 1
               #end for
             </div>
 
             #set $warning_index = 0
-            <!--prettier-ignore-->
             <div
               class="bx--col-sm-4 bx--col-md-8 bx--col-lg-6 bx--col-xlg-6 bx--col-max-6"
             >
               #for $region, $region_key in $get_dwd_warnings.items()
               #if os.path.exists("dwd/warn-" + $region_key + ".json") and ($warning_index % 2) != 0
 
-                <!--prettier-ignore-->
                 #set global $region = $region
                 #set global $region_key = $region_key
                 #include "includes/dwd-warning.inc"
 
-              <!--prettier-ignore-->
               #end if
               #set $warning_index = $warning_index + 1
               #end for

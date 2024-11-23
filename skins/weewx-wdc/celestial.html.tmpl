@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #from datetime import datetime
@@ -25,10 +24,8 @@
               <h2>$now</h2>
             </header>
           </div>
-          <!--prettier-ignore-->
           #if $almanac.hasExtras
           <div class="bx--row">
-            <!--prettier-ignore-->
             #attr $labels_almanac = ["Sun", "Moon"]
             #for $label in $labels_almanac
             #set global $label_almanac = $label
@@ -36,7 +33,6 @@
             #end for
           </div>
           <div class="bx--row">
-            <!--prettier-ignore-->
             #attr $labels_almanac2 = ["Venus", "Mars", "Jupiter", "Saturn"]
             #for $label in $labels_almanac2
             #set global $label_almanac = $label
@@ -44,13 +40,11 @@
             #end for
           </div>
           <div class="bx--row">
-            <!--prettier-ignore-->
             #include "includes/almanac-sun-detail-tile.inc"
             #include "includes/almanac-moon-detail-tile.inc"
           </div>
           #else
           <div class="bx--row">
-            <!--prettier-ignore-->
             #set global $label_almanac = $gettext("Sun")
             #include "includes/almanac-tile-simple.inc"
           </div>

@@ -1,6 +1,5 @@
 #errorCatcher Echo
 
-<!--prettier-ignore-->
 #encoding UTF-8
 #attr $context = 'year'
 #attr $use_parameter_year = True
@@ -36,17 +35,14 @@
             </header>
           </div>
 
-          <!--prettier-ignore-->
           #if len($DisplayOptions.get('climatological_days', [])) > 0
           <div class="bx--row">
             <div class="bx--col">
-              <!--prettier-ignore-->
               #include "includes/climatological-days.inc"
             </div>
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
             #include 'includes/body-alternative.inc'
           #else

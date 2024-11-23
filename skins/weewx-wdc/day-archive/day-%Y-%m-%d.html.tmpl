@@ -1,4 +1,3 @@
-<!--prettier-ignore-->
 #errorCatcher Echo
 #encoding UTF-8
 #import datetime
@@ -29,9 +28,7 @@
             </header>
           </div>
 
-          <!--prettier-ignore-->
           #if $get_day_archive_enabled()
-          <!--prettier-ignore-->
           <div class="bx--row" style="margin-bottom: 2rem;">
             <div class="bx--col-sm-4 bx--col-md-8 bx--col-lg-12 bx--col-xlg-6 bx--col-max-6">
               #set $archive_days = $get_archive_days_array($alltime.dateTime.raw, $latest.dateTime.raw, $get_time_format_dict['daily_archive'])
@@ -47,7 +44,6 @@
           </div>
           #end if
 
-          <!--prettier-ignore-->
           #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
             #include 'includes/body-alternative.inc'
           #else
