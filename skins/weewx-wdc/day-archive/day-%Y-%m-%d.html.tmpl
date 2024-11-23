@@ -9,12 +9,12 @@
 <!DOCTYPE html>
 <html lang="$lang">
   <head>
-    #include "includes/html-head.inc"
+    #include "includes/layout/html-head.inc"
     <title>$station.location - $gettext("Archive")</title>
   </head>
 
   <body class="theme-$DisplayOptions.get('layout', 'alternative')">
-    #include "includes/ui-shell.inc"
+    #include "includes/layout/ui-shell.inc"
 
     <main class="main bx--content">
       <section>
@@ -45,9 +45,9 @@
           #end if
 
           #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
-            #include 'includes/body-alternative.inc'
+            #include 'includes/layout/body-alternative.inc'
           #else
-            #include 'includes/body-classic.inc'
+            #include 'includes/layout/body-classic.inc'
           #end if
         </div>
       </section>
@@ -55,10 +55,10 @@
 
     <!--Stat tile Modals-->
     #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
-      #include "includes/stat-tile-modals.inc"
+      #include "includes/tiles/stat-tile-modals.inc"
     #end if
 
-    #include "includes/footer.inc"
+    #include "includes/layout/footer.inc"
 
     <script src="$get_base_path(path='dist/main.js')" defer></script>
   </body>

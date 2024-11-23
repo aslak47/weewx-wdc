@@ -143,7 +143,7 @@
     </bx-structured-list>
 
     #if $show_climatological_days_per_month
-      #include "includes/year-stats-table.inc"
+      #include "includes/statistics-tables/year-stats-table.inc"
     #end if
   </div>
   #if $getattr($get_time_span_from_context($context, $day, $week, $month, $year, $alltime, $yesterday), 'rain').has_data
@@ -265,14 +265,14 @@
         #set global $comb_obs = "climatogram_year"
         #set global $combined_diagram = $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('climatogram_year', {})
         #set global $diagram_index = 9999
-        #include "includes/combined-diagram-tile.inc"
+        #include "includes/tiles/combined-diagram-tile.inc"
       </div>
     #else if $show_climatogram_alltime
       <div class="alltime">
         #set global $comb_obs = "climatogram_statistics"
         #set global $combined_diagram = $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('climatogram_statistics', {})
         #set global $diagram_index = 9999
-        #include "includes/combined-diagram-tile.inc"
+        #include "includes/tiles/combined-diagram-tile.inc"
       </div>
     #end if
   </div>
@@ -291,7 +291,7 @@
           #set global $stat_table_obs = $DisplayOptions['stat_tables'][$stat_table]['observation']
           #set global $stat_table_aggregate_types = $to_list($DisplayOptions['stat_tables'][$stat_table]['aggregate_types'])
 
-          #include "includes/stat-table.inc"
+          #include "includes/statistics-tables/stat-table.inc"
         </div>
       #end if
     #end for

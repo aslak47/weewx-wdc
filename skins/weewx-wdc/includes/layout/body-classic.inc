@@ -17,7 +17,7 @@
     #if $getattr($get_time_span_from_context($context, $day($data_binding=$gauge_obs_binding), $week($data_binding=$gauge_obs_binding), $month($data_binding=$gauge_obs_binding), $year($data_binding=$gauge_obs_binding), $alltime_tag, $yesterday($data_binding=$gauge_obs_binding)), $get_custom_data_binding_obs_key($gauge_obs)).has_data
       #set global $gauges_index = $gauges_index
       #set global $partial_obs = $gauge_obs
-      #include "includes/gauge-tile.inc"
+      #include "includes/tiles/gauge-tile.inc"
       #set $gauges_index = $gauges_index + 1
     #end if
   #end for
@@ -47,10 +47,10 @@
 <div class="bx--row">
   <div class="bx--col-sm-4 bx--col-md-8 bx--col-lg-6 bx--col-xlg-4 bx--col-max-4 layout-col">
     #set global $stat_obs = $DisplayOptions.get('stat_tile_observations')
-    #include 'includes/conditions-table.inc'
+    #include 'includes/tiles/conditions-table.inc'
 
     #if $context == "day" and $daily_archive == False
-    #include "includes/forecast.inc"
+    #include "includes/forecast/forecast.inc"
     #end if
 
     #if $stat_tiles_xaggs_classic
@@ -65,7 +65,7 @@
     <div class="bx--row">
       #for $stat_xaggs in $stat_tiles_xaggs_classic
         #set global $stat_xaggs = $stat_xaggs
-        #include "includes/stat-tile-xaggs.inc"
+        #include "includes/tiles/stat-tile-xaggs.inc"
       #end for
     </div>
     #end if
@@ -116,7 +116,7 @@
             #set global $comb_obs = $skin_obs
             #set global $combined_diagram = $combined_diagram
             #set global $diagram_index = $diagram_index
-            #include "includes/combined-diagram-tile.inc"
+            #include "includes/tiles/combined-diagram-tile.inc"
             #set $diagram_index = $diagram_index + 1
             #break
           #end if
@@ -128,9 +128,9 @@
           #set global $partial_obs = $skin_obs
           #set global $diagram_index = $diagram_index
           #if $skin_obs == 'windRose'
-            #include "includes/diagram-tile-wind-rose.inc"
+            #include "includes/tiles/diagram-tile-wind-rose.inc"
           #else
-            #include "includes/diagram-tile.inc"
+            #include "includes/tiles/diagram-tile.inc"
           #end if
           #set $diagram_index = $diagram_index + 1
         #end if
@@ -149,6 +149,6 @@
 #if 'table_tile_observations' in $DisplayOptions
 <div class="bx--row">
   #set global $table_obs = None
-  #include "includes/data-table-tile.inc"
+  #include "includes/tiles/data-table-tile.inc"
 </div>
 #end if

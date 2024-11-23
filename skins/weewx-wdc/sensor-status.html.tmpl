@@ -37,7 +37,7 @@
           #set global $comb_obs = $skin_obs
           #set global $combined_diagram = $combined_diagram
           #set global $diagram_index = $diagram_index
-          #include "includes/combined-diagram-tile.inc"
+          #include "includes/tiles/combined-diagram-tile.inc"
           #set $diagram_index = $diagram_index + 1
           #break
         #end if
@@ -49,9 +49,9 @@
         #set global $partial_obs = $skin_obs
         #set global $diagram_index = $diagram_index
         #if $skin_obs == 'windRose'
-          #include "includes/diagram-tile-wind-rose.inc"
+          #include "includes/tiles/diagram-tile-wind-rose.inc"
         #else
-          #include "includes/diagram-tile.inc"
+          #include "includes/tiles/diagram-tile.inc"
         #end if
         #set $diagram_index = $diagram_index + 1
       #end if
@@ -149,12 +149,12 @@
 <!DOCTYPE html>
 <html lang="$lang">
   <head>
-    #include "includes/html-head.inc"
+    #include "includes/layout/html-head.inc"
     <title>$station.location - $gettext("Sensor Status")</title>
   </head>
 
   <body class="theme-$layout">
-    #include "includes/ui-shell.inc"
+    #include "includes/layout/ui-shell.inc"
 
     <main class="main bx--content">
       <section>
@@ -173,7 +173,7 @@
             >
               #set global $context = 'day'
               #set global $stat_obs = $sensor_stat_tile_observations
-              #include 'includes/conditions-table.inc'
+              #include 'includes/tiles/conditions-table.inc'
 
               <div class="bx--row">
                 $batteries($sensor_batteries, $layout)
@@ -191,7 +191,7 @@
             #if 'sensor_table_observations' in $DisplayOptions
             <div class="bx--row">
               #set global $table_obs = $DisplayOptions.get('sensor_table_observations')
-              #include "includes/data-table-tile.inc"
+              #include "includes/tiles/data-table-tile.inc"
             </div>
             #end if
           </div>
@@ -209,7 +209,7 @@
 
               #if $getattr($current, $get_custom_data_binding_obs_key($obs)).has_data
                 #set global $partial_obs = $obs
-                #include "includes/stat-tile.inc"
+                #include "includes/tiles/stat-tile.inc"
               #end if
             #end for
           </div>
@@ -217,7 +217,7 @@
           #set global $context = $sensor_diagram_period
 
           <div class="bx--row">
-            #include "includes/section-heading.inc"
+            #include "includes/layout/section-heading.inc"
           </div>
 
           <div class="bx--row">
@@ -227,14 +227,14 @@
           #if 'sensor_table_observations' in $DisplayOptions
           <div class="bx--row">
             #set global $table_obs = $DisplayOptions.get('sensor_table_observations')
-            #include "includes/data-table-tile.inc"
+            #include "includes/tiles/data-table-tile.inc"
           </div>
           #end if
         #end if
         </div>
       </section>
     </main>
-    #include "includes/footer.inc"
+    #include "includes/layout/footer.inc"
 
     <script src="$get_base_path(path='dist/main.js')" defer></script>
   </body>

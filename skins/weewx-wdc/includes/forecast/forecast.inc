@@ -60,7 +60,7 @@
           #end if
           #if $varExists('forecast') and not $dwd_forecast
           <div class="forecast" data-test="forecast-table">
-            #include "includes/forecast-table.inc"
+            #include "includes/forecast/forecast-table.inc"
           </div>
           #end if
           #if $dwd_forecast
@@ -87,7 +87,7 @@
         #if $show_warn
           #set global $region = $get_dwd_warning_region_name($warn_region_front)
           #set global $region_key = $warn_region_front
-          #include "includes/dwd-warning.inc"
+          #include "includes/forecast/dwd-warning.inc"
         #end if
 
         #if $radar_externals

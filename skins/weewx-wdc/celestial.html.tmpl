@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html lang="$lang">
   <head>
-    #include "includes/html-head.inc"
+    #include "includes/layout/html-head.inc"
     <title>$station.location - $gettext("Almanac")</title>
   </head>
 
   <body class="theme-$DisplayOptions.get('layout', 'alternative')">
-    #include "includes/ui-shell.inc"
+    #include "includes/layout/ui-shell.inc"
 
     <main class="main bx--content">
       <section>
@@ -29,24 +29,24 @@
             #attr $labels_almanac = ["Sun", "Moon"]
             #for $label in $labels_almanac
             #set global $label_almanac = $label
-            #include "includes/almanac-tile.inc"
+            #include "includes/almanac/almanac-tile.inc"
             #end for
           </div>
           <div class="bx--row">
             #attr $labels_almanac2 = ["Venus", "Mars", "Jupiter", "Saturn"]
             #for $label in $labels_almanac2
             #set global $label_almanac = $label
-            #include "includes/almanac-tile.inc"
+            #include "includes/almanac/almanac-tile.inc"
             #end for
           </div>
           <div class="bx--row">
-            #include "includes/almanac-sun-detail-tile.inc"
-            #include "includes/almanac-moon-detail-tile.inc"
+            #include "includes/almanac/almanac-sun-detail-tile.inc"
+            #include "includes/almanac/almanac-moon-detail-tile.inc"
           </div>
           #else
           <div class="bx--row">
             #set global $label_almanac = $gettext("Sun")
-            #include "includes/almanac-tile-simple.inc"
+            #include "includes/almanac/almanac-tile-simple.inc"
           </div>
           <div class="bx--row">
             <div class="bx--col">
@@ -60,7 +60,7 @@
       </section>
     </main>
 
-    #include "includes/footer.inc"
+    #include "includes/layout/footer.inc"
 
     <script src="$get_base_path(path='dist/main.js')" defer></script>
   </body>

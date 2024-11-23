@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="$lang">
   <head>
-    #include "includes/html-head.inc"
+    #include "includes/layout/html-head.inc"
     <title>$station.location - $gettext("Forecast")</title>
     <script
       type="module"
@@ -22,7 +22,7 @@
   </head>
 
   <body class="theme-$DisplayOptions.get('layout', 'alternative')">
-    #include "includes/ui-shell.inc"
+    #include "includes/layout/ui-shell.inc"
 
     <main class="main bx--content">
       <section>
@@ -91,7 +91,7 @@
             #set global $comb_obs = "dwd_meteogram_1"
             #set global $combined_diagram = $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('dwd_meteogram_1', {})
             #set global $diagram_index = 9999
-            #include "includes/combined-diagram-tile.inc"
+            #include "includes/tiles/combined-diagram-tile.inc"
           </div>
           #end if
 
@@ -106,7 +106,7 @@
             #set global $comb_obs = "dwd_meteogram_2"
             #set global $combined_diagram = $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('dwd_meteogram_2', {})
             #set global $diagram_index = 9999
-            #include "includes/combined-diagram-tile.inc"
+            #include "includes/tiles/combined-diagram-tile.inc"
           </div>
           #end if
 
@@ -121,7 +121,7 @@
             #set global $comb_obs = "dwd_meteogram_3"
             #set global $combined_diagram = $DisplayOptions.get("diagrams", {}).get("combined_observations", {}).get('dwd_meteogram_3', {})
             #set global $diagram_index = 9999
-            #include "includes/combined-diagram-tile.inc"
+            #include "includes/tiles/combined-diagram-tile.inc"
           </div>
           #end if
 
@@ -199,7 +199,7 @@
 
                 #set global $region = $region
                 #set global $region_key = $region_key
-                #include "includes/dwd-warning.inc"
+                #include "includes/forecast/dwd-warning.inc"
 
               #end if
               #set $warning_index = $warning_index + 1
@@ -215,7 +215,7 @@
 
                 #set global $region = $region
                 #set global $region_key = $region_key
-                #include "includes/dwd-warning.inc"
+                #include "includes/forecast/dwd-warning.inc"
 
               #end if
               #set $warning_index = $warning_index + 1
@@ -227,7 +227,7 @@
       </section>
     </main>
 
-    #include "includes/footer.inc"
+    #include "includes/layout/footer.inc"
 
     <script src="$get_base_path(path='dist/main.js')" defer></script>
   </body>

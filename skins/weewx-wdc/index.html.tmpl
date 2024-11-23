@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="$lang">
   <head>
-    #include "includes/html-head.inc"
+    #include "includes/layout/html-head.inc"
     <title>$station.location - $gettext("Current Weather Conditions")</title>
     #if 'refresh_interval' in $Extras
     <meta http-equiv="refresh" content="$Extras.refresh_interval" />
@@ -16,7 +16,7 @@
   </head>
 
   <body class="theme-$DisplayOptions.get('layout', 'alternative')">
-    #include "includes/ui-shell.inc"
+    #include "includes/layout/ui-shell.inc"
 
     <main class="main bx--content">
       <section>
@@ -58,9 +58,9 @@
           </div>
 
           #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
-            #include 'includes/body-alternative.inc'
+            #include 'includes/layout/body-alternative.inc'
           #else
-            #include 'includes/body-classic.inc'
+            #include 'includes/layout/body-classic.inc'
           #end if
         </div>
       </section>
@@ -68,7 +68,7 @@
 
     <!--Stat tile Modals-->
     #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
-      #include "includes/stat-tile-modals.inc"
+      #include "includes/tiles/stat-tile-modals.inc"
     #end if
 
     <!--Externals Modals-->
@@ -154,7 +154,7 @@
       #end for
     #end if
 
-    #include "includes/footer.inc"
+    #include "includes/layout/footer.inc"
 
     #if $to_bool($DisplayOptions.get("outTemp_stat_tile_color", "False"))
     <script src="$get_base_path(path='dist/colored-temperature.js')" defer></script>
