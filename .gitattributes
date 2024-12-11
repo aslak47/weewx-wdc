@@ -1,4 +1,4 @@
-skins/weewx-wdc/includes/**.inc linguist-language=Python
+skins/weewx-wdc/includes/*/*.inc linguist-language=Python
 skins/weewx-wdc/includes/icons/*.inc linguist-documentation
 skins/weewx-wdc/includes/pictograms/*.inc linguist-documentation
 .yarn/releases/** binary
