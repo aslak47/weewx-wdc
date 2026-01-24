@@ -7,8 +7,11 @@ mv "${WEEWX_HOME}"/skins/weewx-wdc/skin-dwd.conf "${WEEWX_HOME}"/skins/weewx-wdc
 cat "${WEEWX_HOME}"/skins/weewx-wdc/weewx-dwd.conf >> "${WEEWX_HOME}"/weewx.conf
 sed -i -z -e "s|lang = en|lang = de|g" "${WEEWX_HOME}"/weewx.conf
 
+# Log to stdout
+cat "${WEEWX_HOME}"/weewx.conf
+
 # @see https://github.com/roe-dl/weewx-DWD#wettervorhersage-als-diagramm
-sed -i '/schema = schemas.wview_extended.schema/a \[\[dwd_binding\]\]\n        database = dwd_sqlite\n        table_name = forecast\n        manager = weewx.manager.Manager\n        schema = schemas.dwd.schema\n' "${WEEWX_HOME}"/weewx.conf >/dev/null
+sed -i '/schema = \(weewx\.\)\?schemas\.wview_extended\.schema/a \[\[dwd_binding\]\]\n        database = dwd_sqlite\n        table_name = forecast\n        manager = weewx.manager.Manager\n        schema = weewx.schemas.dwd.schema\n' "${WEEWX_HOME}"/weewx.conf >/dev/null
 sed -i '/A SQLite database is simply a single file/a \[\[dwd_sqlite\]\]\n        database_name = dwd-forecast-O461.sdb\n        database_type = SQLite\n' "${WEEWX_HOME}"/weewx.conf >/dev/null
 cat /tmp/dwd-extensions.py >> "${WEEWX_HOME}"/bin/user/extensions.py
 

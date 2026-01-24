@@ -2,7 +2,7 @@ FROM python:3.10.19-slim-bookworm
 
 LABEL org.opencontainers.image.authors="David Baetge <david.baetge@gmail.com>"
 
-ARG WEEWX_VERSION="5.1.0"
+ARG WEEWX_VERSION="5.2.0"
 ARG WEEWX_UID=2749
 ENV WEEWX_HOME="/home/weewx-data"
 
@@ -103,7 +103,7 @@ COPY src/skin-custom-binding.conf ./skins/weewx-wdc/
 COPY src/skin-sensor-status.conf ./skins/weewx-wdc/
 COPY src/skin-cmon.conf ./skins/weewx-wdc/
 COPY src/weewx-dwd.conf ./skins/weewx-wdc/
-COPY src/dwd.py ./weewx-venv/lib/python3.10/site-packages/schemas/
+COPY src/dwd.py ./weewx-venv/lib/python3.10/site-packages/weewx/schemas/
 COPY src/dwd-extensions.py /tmp
 COPY src/cmon-extensions.py /tmp
 
