@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# start rsyslog
-echo 'Starting rsyslog'
-# remove lingering pid file
-rm -f /run/rsyslogd.pid
-# start service
-service rsyslog start
-
 # start weewx
 echo 'Starting weewx reports (weewx-DWD)'
 
@@ -46,4 +39,3 @@ ls -la "${WEEWX_HOME}/public_html"
 # shellcheck source=/dev/null
 . "${WEEWX_HOME}/weewx-venv/bin/activate" && weectl report run --config "${WEEWX_HOME}/weewx.conf"
 ls -la "${WEEWX_HOME}/public_html"
-cat /var/log/syslog | grep weewx

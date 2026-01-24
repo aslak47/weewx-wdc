@@ -1,12 +1,10 @@
-FROM python:3.10-buster
+FROM python:3.10.19-slim-bookworm
 
 LABEL org.opencontainers.image.authors="David Baetge <david.baetge@gmail.com>"
 
 ARG WEEWX_VERSION="5.1.0"
 ARG WEEWX_UID=2749
 ENV WEEWX_HOME="/home/weewx-data"
-RUN current_date=$(date +%Y-%m-%d\ %H:%M:%S)
-ENV CURRENT_DATE=$current_date
 
 EXPOSE 9877
 
@@ -21,6 +19,7 @@ COPY src/start-without-forecast.sh /start-without-forecast.sh
 COPY src/start-mqtt.sh /start-mqtt.sh
 COPY src/start-sensor.sh /start-sensor.sh
 COPY src/start-cmon.sh /start-cmon.sh
+COPY src/patch-weewx-logging-stdout.sh /usr/local/bin/patch-weewx-logging-stdout.sh
 RUN chmod +x /start.sh &&\
     chmod +x /start-classic.sh &&\
     chmod +x /start-without-forecast.sh &&\
@@ -30,11 +29,12 @@ RUN chmod +x /start.sh &&\
     chmod +x /start-dwd.sh &&\
     chmod +x /start-mqtt.sh &&\
     chmod +x /start-sensor.sh &&\
-    chmod +x /start-cmon.sh
+    chmod +x /start-cmon.sh &&\
+    chmod +x /usr/local/bin/patch-weewx-logging-stdout.sh
 
 # @see https://blog.nuvotex.de/running-syslog-in-a-container/
 RUN apt-get update &&\
-    apt-get install -q -y --no-install-recommends gcc make git rsyslog=8.1901.0-1+deb10u2 python3-configobj python3-requests python3-pip python3-venv &&\
+    apt-get install -q -y --no-install-recommends gcc make git libc6-dev wget unzip tzdata ca-certificates sqlite3 python3-configobj python3-requests python3-pip python3-venv &&\
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/*
 
@@ -53,7 +53,7 @@ RUN git clone https://github.com/wolfcw/libfaketime.git &&\
     #cd .. && make test
 
 RUN wget -nv -O "weewx-interceptor.zip" "https://github.com/matthewwall/weewx-interceptor/archive/master.zip" &&\
-    wget -nv -O "weewx-forecast.zip" "https://github.com/chaunceygardiner/weewx-forecast/archive/refs/heads/master.zip" &&\
+    wget -nv -O "weewx-forecast.zip" "https://github.com/chaunceygardiner/weewx-forecast/releases/download/v3.5/weewx-forecast-3.5.zip" &&\
     wget -nv -O "weewx-cmon.zip" "https://github.com/bellrichm/weewx-cmon/archive/refs/heads/master.zip"
 
 COPY src/weewx-wdc.zip /tmp/weewx-wdc.zip
@@ -66,7 +66,7 @@ WORKDIR ${WEEWX_HOME}
 RUN python3 -m venv ${WEEWX_HOME}/weewx-venv &&\
     # shellcheck source=/dev/null
     . ${WEEWX_HOME}/weewx-venv/bin/activate &&\
-    python3 -m pip install --no-cache-dir weewx==${WEEWX_VERSION} six
+    python3 -m pip install --no-cache-dir weewx==${WEEWX_VERSION} six configobj
 
 RUN . ${WEEWX_HOME}/weewx-venv/bin/activate &&\
     weectl station create "${WEEWX_HOME}" --no-prompt \
@@ -78,6 +78,10 @@ RUN . ${WEEWX_HOME}/weewx-venv/bin/activate &&\
         --register="y" \
         --station-url="https://www.weewx-hbt.de/" \
         --units="metric"
+
+# Patch WeeWX logging to stdout (fixes /dev/log syslog issues in containers)
+RUN . "${WEEWX_HOME}/weewx-venv/bin/activate" && \
+    /usr/local/bin/patch-weewx-logging-stdout.sh "${WEEWX_HOME}/weewx.conf"
 
 # shellcheck source=/dev/null
 RUN . "${WEEWX_HOME}/weewx-venv/bin/activate" &&\
@@ -113,5 +117,6 @@ ADD src/weewx-generated-2022-06-23.tar.xz ./archive
 ADD src/weewx-sensor-status.tar.xz ./archive
 ADD src/weewx-cmon.tar.xz ./archive
 ADD src/cmon.tar.xz ./archive
+ADD src/forecast-db.tar.xz ./archive
 
 ENTRYPOINT [ "/start.sh" ]

@@ -11,7 +11,7 @@ test.describe("Forecast", () => {
     // 6 rows.
     await expect(
       forecast_table.locator("bx-structured-list-body > bx-structured-list-row")
-    ).toHaveCount(6);
+    ).toHaveCount(7);
 
     // 6 columns.
     await expect(
@@ -50,7 +50,7 @@ test.describe("Forecast", () => {
 
     await expect(forecast_zambretti.locator("h3")).toHaveText("Zambretti");
     await expect(forecast_zambretti.locator("p")).toContainText(
-      "The forecast is Occasional rain, worsening"
+      "The forecast is Fairly fine, showery later"
     );
   });
 });
