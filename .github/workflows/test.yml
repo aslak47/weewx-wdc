@@ -11,6 +11,7 @@ on:
       - package.json
       - yarn.lock
       - playwright.config.ts
+      - .github/workflows/test.yml
   pull_request:
     branches: [1.x, 2.x, 2.*.x, 3.x]
     paths:
@@ -21,7 +22,7 @@ on:
       - package.json
       - yarn.lock
       - playwright.config.ts
-
+      - .github/workflows/test.yml
 jobs:
   shunit2:
     runs-on: ubuntu-22.04
@@ -133,7 +134,9 @@ jobs:
           timezoneLinux: "Europe/Berlin"
 
       - name: 🔨 install yarn and dependecies
-        run: yarn install --immutable
+        run: |
+          corepack enable
+          yarn install --immutable
 
       - name: install playwright deps
         run: yarn playwright install --with-deps
