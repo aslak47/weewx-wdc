@@ -53,7 +53,7 @@ RUN git clone https://github.com/wolfcw/libfaketime.git &&\
     #cd .. && make test
 
 RUN wget -nv -O "weewx-interceptor.zip" "https://github.com/matthewwall/weewx-interceptor/archive/master.zip" &&\
-    wget -nv -O "weewx-forecast.zip" "https://github.com/chaunceygardiner/weewx-forecast/releases/download/v3.5/weewx-forecast-3.5.zip" &&\
+    wget -nv -O "weewx-forecast.zip" "https://github.com/chaunceygardiner/weewx-forecast/releases/download/v4.0/weewx-forecast-4.0.zip" &&\
     wget -nv -O "weewx-cmon.zip" "https://github.com/bellrichm/weewx-cmon/archive/refs/heads/master.zip"
 
 COPY src/weewx-wdc.zip /tmp/weewx-wdc.zip
