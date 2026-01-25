@@ -27,7 +27,9 @@ export const StatisticsSelect: React.FC<StatisticsSelect> = (
       titleText={he.decode(translations.Archive_day)}
       helperText={`${he.decode(translations.stats_helper_text)} ${
         (window as any).archive_date_time.now
-      }, ${translations.Format_is} ${(window as any).archive_date_time.format}`}
+      }. ${he.decode(translations.Format_is)} ${
+        (window as any).archive_date_time.format
+      }`}
       onChange={(event) => {
         document.location.href = event.selectedItem
           ? // @todo base path

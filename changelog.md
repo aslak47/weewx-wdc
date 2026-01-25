@@ -938,8 +938,9 @@ index 465d4ad..aa8bad6 100644
 
 # Next
 
-- Fixed gauge label decoding. GH-271
+- Bugfix: Gauge label decoding. GH-271, GH-301
 - Add Moon phases and planet name translations GH-264
 - Added option to only color the text in the colored temperatur stat tile GH-243
 - Simplified adding of user defined modals GH-255
+- Bugfix: Helper text in Archive day dropdown GH-263
 - (chore) Remove prettier from *.inc and *html.tmpl files. Restructured templates in `includes/` folder. GH-234

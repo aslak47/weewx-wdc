@@ -11,7 +11,7 @@ test.describe("Daily archive", () => {
     await expect(selector).toBeVisible();
 
     await expect(selector.locator(".bx--form__helper-text")).toHaveText(
-      "Choose a day to view a statistics page. You can also filter/search for a date by start typing, eg: 2022-06-23, Format is %Y-%m-%d"
+      "Choose a day to view a statistics page. You can also filter/search for a date by start typing, eg: 2022-06-23. Format is %Y-%m-%d"
     );
 
     expect(await selector.locator("script").innerText()).toMatchSnapshot();
